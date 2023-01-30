@@ -88,7 +88,7 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-
+    cartList = [];
 }
 
 // Exercise 3
