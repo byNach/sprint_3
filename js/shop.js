@@ -91,9 +91,8 @@ function cleanCart() {
 function calculateTotal() {
 
     for (i = 0; i < cartList.length; i++) {
-        itemPrice = cartList[i];
-        unitPrice = itemPrice.price;
-        total = total + unitPrice;
+        itemPrice = cartList[i].price;
+        total = total + itemPrice;
     }
 }
 
