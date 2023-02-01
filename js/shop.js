@@ -137,8 +137,11 @@ function applyPromotionsCart() {
         let index3 = cart.findIndex(e => e.id == "3");
         if (find3promo.quantity >= 10) {
             alert("Aplica promoció de cupcakes");
-            index3Total = (5 * cart[index3].quantity);
-            cart[index3].subtotalWithDiscount = Math.round((index3Total / 3) * 2);
+            let index3Total = (cart[index3].price * cart[index3].quantity);
+            index3Total = (index3Total * 0.7);
+            index3TotaltoFixed = index3Total.toFixed(2);
+            cart[index3].subtotalWithDiscount = index3TotaltoFixed;
+            console.log(cart);
         }
     }
 }
