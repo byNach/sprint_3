@@ -96,7 +96,6 @@ function calculateTotal() {
     }
 }
 
-
 // Exercise 4
 function generateCart() {
 
@@ -108,19 +107,40 @@ function generateCart() {
         else {
             cartList[i].quantity = 1;
             cartList[i].subtotal = cartList[i].price;
-            cart.push(cartList[i]);           
+            cart.push(cartList[i]);
         }
     }
 }
 
 // Exercise 5
 function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
 
-    console.log(cart);
+    let find1promo = cart.find(e => e.id === 1);
 
-    //Buscar en array de objetos (CART) si estos tienen o no promoción
+    if (find1promo === undefined) {
+        console.log("Producte (oli) no trobat");
+    }
+    else {
+        let index1 = cart.findIndex(e => e.id == "1");
+        if (find1promo.quantity >= 3) {
+            alert("Aplica promoció d'oli");
+            cart[index1].subtotalWithDiscount = (10 * cart[index1].quantity);
+        }
+    }
 
+    let find3promo = cart.find(e => e.id === 3);
+
+    if (find3promo === undefined) {
+        console.log("Producte (cupcakes) no trobat");
+    }
+    else {
+        let index3 = cart.findIndex(e => e.id == "3");
+        if (find3promo.quantity >= 10) {
+            alert("Aplica promoció de cupcakes");
+            index3Total = (5 * cart[index3].quantity);
+            cart[index3].subtotalWithDiscount = Math.round((index3Total / 3) * 2);
+        }
+    }
 }
 
 // Exercise 6
