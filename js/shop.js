@@ -67,17 +67,17 @@ var products = [
 var cartList = [];
 
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
-var cart = [];
+var cart = [""];
 var total = 0;
 let found = "";
 
 // Exercise 1
 function buy(id) {
+
     for (let i = 0; i < products.length; i++) {
         let index = products.findIndex(e => e.id == id);
         const objFound = Object.assign(products[index]);
         cartList.push(objFound);
-        console.log(cartList);
         break;
     }
 }
@@ -89,6 +89,7 @@ function cleanCart() {
 
 // Exercise 3
 function calculateTotal() {
+
     for (i = 0; i < cartList.length; i++) {
         itemPrice = cartList[i];
         unitPrice = itemPrice.price;
@@ -99,18 +100,16 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
-    // for (i=0; i < cartList.length; i++){
-    console.log(cartList);
-
-
-    //console.log(cartList);
-    //console.log(cart);
-    //console.log(found);
-    // }
-
+    for (i = 0; i < cartList.length; i++) {
+        if (cartList[i].hasOwnProperty("quantity")) {
+            cartList[i].quantity = cartList[i].quantity + 1;
+        }
+        else {
+            cartList[i].quantity = 1;
+            cart.push(cartList[i]);
+        }
+    }
 }
 
 // Exercise 5
