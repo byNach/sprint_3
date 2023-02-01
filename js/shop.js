@@ -104,10 +104,12 @@ function generateCart() {
     for (i = 0; i < cartList.length; i++) {
         if (cartList[i].hasOwnProperty("quantity")) {
             cartList[i].quantity = cartList[i].quantity + 1;
+            cartList[i].subtotal = cartList[i].subtotal + cartList[i].price;
         }
         else {
             cartList[i].quantity = 1;
-            cart.push(cartList[i]);
+            cartList[i].subtotal = cartList[i].price;
+            cart.push(cartList[i]);           
         }
     }
 }
@@ -115,6 +117,11 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+
+    console.log(cart);
+
+    //Buscar en array de objetos (CART) si estos tienen o no promoción
+
 }
 
 // Exercise 6
