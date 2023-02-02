@@ -90,10 +90,21 @@ function cleanCart() {
 // Exercise 3
 function calculateTotal() {
 
-    for (i = 0; i < cartList.length; i++) {
-        itemPrice = cartList[i].price;
-        total = total + itemPrice;
+    totalWithDiscount = 0
+    totalWithoutDiscount = 0
+
+    for (i = 1; i < cart.length; i++) {
+
+        if (cart[i].subtotalWithDiscount === undefined) {
+            let subtotal = cart[i].subtotal;
+            totalWithoutDiscount = parseFloat(totalWithoutDiscount) + parseFloat(subtotal);
+        }
+        else {
+            let subtotalWithDiscount = cart[i].subtotalWithDiscount;
+            totalWithDiscount = parseFloat(totalWithDiscount) + parseFloat(subtotalWithDiscount);
+        }
     }
+    total = totalWithDiscount + totalWithoutDiscount;
 }
 
 // Exercise 4
@@ -118,12 +129,12 @@ function applyPromotionsCart() {
     let find1promo = cart.find(e => e.id === 1);
 
     if (find1promo === undefined) {
-        console.log("Producte (oli) no trobat");
+
     }
+
     else {
         let index1 = cart.findIndex(e => e.id == "1");
         if (find1promo.quantity >= 3) {
-            alert("Aplica promoció d'oli");
             cart[index1].subtotalWithDiscount = (10 * cart[index1].quantity);
         }
     }
@@ -131,24 +142,46 @@ function applyPromotionsCart() {
     let find3promo = cart.find(e => e.id === 3);
 
     if (find3promo === undefined) {
-        console.log("Producte (cupcakes) no trobat");
+
     }
     else {
         let index3 = cart.findIndex(e => e.id == "3");
         if (find3promo.quantity >= 10) {
-            alert("Aplica promoció de cupcakes");
             let index3Total = (cart[index3].price * cart[index3].quantity);
             index3Total = (index3Total * 0.7);
             index3TotaltoFixed = index3Total.toFixed(2);
             cart[index3].subtotalWithDiscount = index3TotaltoFixed;
-            console.log(cart);
         }
     }
 }
 
 // Exercise 6
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
+
+    for (i = 1; i < cart.length; i++) {
+        if (cart[i].subtotalWithDiscount === undefined) {
+            cart_list.insertAdjacentHTML('beforeend',
+                `<tr> <th scope="row">${cart[i].name}</th>` +
+                `<td>${cart[i].price}</td>` +
+                `<td>${cart[i].quantity}</td>` +
+                `<td>${cart[i].subtotal}</td>` +
+                `<td>${cart[i].subtotal} </td>` +
+                `</tr>`);
+        }
+
+        else {
+            cart_list.insertAdjacentHTML('beforeend',
+                `<tr> <th scope="row">${cart[i].name}</th>` +
+                `<td>${cart[i].price}</td>` +
+                `<td>${cart[i].quantity}</td>` +
+                `<td>${cart[i].subtotal}</td>` +
+                `<td>${cart[i].subtotalWithDiscount} </td>` +
+                `</tr>`);
+        }
+    }
+    calculateTotal();
+    total_price.insertAdjacentHTML('beforeend', `${total}`);
+
 }
 
 
