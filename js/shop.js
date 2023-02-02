@@ -70,14 +70,18 @@ var cartList = [];
 var cart = [""];
 var total = 0;
 let found = "";
+let numOfProductsBuyed = 0;
 
 // Exercise 1
 function buy(id) {
+
 
     for (let i = 0; i < products.length; i++) {
         let index = products.findIndex(e => e.id == id);
         const objFound = Object.assign(products[index]);
         cartList.push(objFound);
+        numOfProductsBuyed += 1;
+        document.getElementById("count_product").innerHTML = numOfProductsBuyed;
         break;
     }
 }
