@@ -158,6 +158,10 @@ function applyPromotionsCart() {
 // Exercise 6
 function printCart() {
 
+    generateCart();
+    applyPromotionsCart();
+
+
     for (i = 1; i < cart.length; i++) {
         if (cart[i].subtotalWithDiscount === undefined) {
             cart_list.insertAdjacentHTML('beforeend',
