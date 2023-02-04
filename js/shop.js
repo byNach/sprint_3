@@ -88,7 +88,10 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-    cartList = [];
+
+    if (confirm("Clean cart?") == true){
+        location.reload();    
+    }  
 }
 
 // Exercise 3
@@ -165,7 +168,6 @@ function printCart() {
     generateCart();
     applyPromotionsCart();
 
-
     for (i = 1; i < cart.length; i++) {
         if (cart[i].subtotalWithDiscount === undefined) {
             cart_list.insertAdjacentHTML('beforeend',
@@ -209,6 +211,5 @@ function removeFromCart(id) {
 }
 
 function open_modal() {
-    console.log("Open Modal");
     printCart();
 }
