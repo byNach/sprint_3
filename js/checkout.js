@@ -3,26 +3,44 @@
 function validate() {
 	var error = 0;
 	// Get the input fields
-	var fName = document.getElementById("fName");
-	var fEmail = document.getElementById("fEmail");
+	var fName = document.getElementById("fName").value;
+	var fLastN = document.getElementById("fLastN").value;
+	var fEmail = document.getElementById("fEmail").value;
+	var fPassword = document.getElementById("fPassword").value;
+	var fAddress = document.getElementById("fAddress").value;
+	var fPhone = document.getElementById("fPhone").value;
 
-	// Get the error elements
-	var errorName = document.getElementById("errorName");
-	var errorEmail = document.getElementById("errorEmail");  
-	
-	// Validate fields entered by the user: name, phone, password, and email
-	if(fName.value == ""){
-		error++;
-	}
+	const onlyLetters = (/^([a-zA-ZáéíóúüÁÉÍÓÚÜñÑ]{3,20}[\,\-\.]{0,1}[\s]{0,1}){1,3}$/);
+	const mailFormat = (/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/);
+	const passFormat = (/^(?=.*\d)(?=.*[a-zA-Z]).{4,8}$/);
 
-	if(fEmail.value == ""){
+	if (onlyLetters.test(fName) !== true) {
 		error++;
+		console.log(errorName);
 	}
-	 
-	if(error>0){
+	if (onlyLetters.test(fLastN) !== true) {
+		error++;
+		console.log(errorLastN);
+	}
+	if (mailFormat.test(fEmail) !== true) {
+		error++;
+		console.log(errorEmail);
+	}
+	if (passFormat.test(fPassword) !== true) {
+		error++;
+		console.log(errorPassword);
+	}
+	if (fAddress.length < 3) {
+		error++;
+		console.log(errorAddress);
+	}
+	if (fPhone.length != 9) {
+		error++;
+		console.log(errorPhone);
+	}
+	if (error > 0) {
 		alert("Error");
-	}else{
+	} else {
 		alert("OK");
 	}
-
 }
