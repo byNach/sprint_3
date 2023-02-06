@@ -63,6 +63,7 @@ var products = [
         type: 'clothes'
     }
 ]
+
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
 
@@ -73,8 +74,8 @@ let found = "";
 let numOfProductsBuyed = 0;
 
 // Exercise 1
+/*
 function buy(id) {
-
 
     for (let i = 0; i < products.length; i++) {
         let index = products.findIndex(e => e.id == id);
@@ -85,13 +86,14 @@ function buy(id) {
         break;
     }
 }
+*/
 
 // Exercise 2
 function cleanCart() {
 
-    if (confirm("Clean cart?") == true){
-        location.reload();    
-    }  
+    if (confirm("Clean cart?") == true) {
+        location.reload();
+    }
 }
 
 // Exercise 3
@@ -115,6 +117,7 @@ function calculateTotal() {
 }
 
 // Exercise 4
+/*
 function generateCart() {
 
     for (i = 0; i < cartList.length; i++) {
@@ -129,6 +132,7 @@ function generateCart() {
         }
     }
 }
+*/
 
 // Exercise 5
 function applyPromotionsCart() {
@@ -136,7 +140,6 @@ function applyPromotionsCart() {
     let find1promo = cart.find(e => e.id === 1);
 
     if (find1promo === undefined) {
-
     }
 
     else {
@@ -164,8 +167,6 @@ function applyPromotionsCart() {
 
 // Exercise 6
 function printCart() {
-
-    generateCart();
     applyPromotionsCart();
 
     for (i = 1; i < cart.length; i++) {
@@ -191,20 +192,39 @@ function printCart() {
     }
     calculateTotal();
     total_price.insertAdjacentHTML('beforeend', `${total}`);
-
 }
 
-
 // ** Nivell II **
+// Exercise 8
 
-// Exercise 7
+let i = 0;
+
 function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+
+    let index = products.findIndex(e => e.id == id);
+    const objFound = Object.assign(products[index]);
+    cartList.push(objFound);
+    numOfProductsBuyed += 1;
+    document.getElementById("count_product").innerHTML = numOfProductsBuyed;
+
+    for (i = i; +i < cartList.length; i++) {
+        if (cartList[i].hasOwnProperty("quantity")) {
+            cartList[i].quantity = cartList[i].quantity + 1;
+            cartList[i].subtotal = cartList[i].subtotal + cartList[i].price;
+        }
+        else {
+            cartList[i].quantity = 1;
+            cartList[i].subtotal = cartList[i].price;
+            cart.push(cartList[i]);
+        }
+    }
+    console.log(cart);
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
