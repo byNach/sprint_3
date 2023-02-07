@@ -91,6 +91,10 @@ function buy(id) {
 // Exercise 2
 function cleanCart() {
     cart = []
+    total = 0;
+    numOfProductsBuyed = 0;
+    document.getElementById("count_product").innerHTML = numOfProductsBuyed;
+    printCart();
 }
 
 // Exercise 3
