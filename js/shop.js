@@ -90,11 +90,7 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-    cart = []
-    total = 0;
-    numOfProductsBuyed = 0;
-    document.getElementById("count_product").innerHTML = numOfProductsBuyed;
-    printCart();
+    location.reload();
 }
 
 // Exercise 3
@@ -176,7 +172,7 @@ function printCart() {
     <td> $ ${e.price} </td>
     <td> ${e.quantity} </td>
     <td>$ ${e.subtotal}</td>
-    <td>${e.subtotalWithDiscount ? '$' + e.subtotalWithDiscount : ''}</td>
+    <td>${e.subtotalWithDiscount ? '$' + e.subtotalWithDiscount : e.subtotal}</td>
     </tr>
     `
     });
