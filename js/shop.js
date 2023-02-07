@@ -101,15 +101,15 @@ function calculateTotal() {
     for (i = 0; i < cart.length; i++) {
         if (cart[i].subtotalWithDiscount === undefined) {
             let subtotal = cart[i].subtotal;
-            totalWithoutDiscount = subtotal;
-
+            totalWithoutDiscount = subtotal + totalWithoutDiscount;
         }
         else {
             let subtotalWithDiscount = cart[i].subtotalWithDiscount;
             totalWithDiscount = parseFloat(totalWithDiscount) + parseFloat(subtotalWithDiscount);
         }
+
+        total = totalWithDiscount + totalWithoutDiscount;
     }
-    total = totalWithDiscount + totalWithoutDiscount;
 }
 
 // Exercise 4
