@@ -314,7 +314,7 @@ caption {
 }
 
 th {
-  text-align: inherit;
+  text-align: center;
   text-align: -webkit-match-parent;
 }
 
@@ -324,6 +324,7 @@ tfoot,
 tr,
 td,
 th {
+  text-align: center;
   border-color: inherit;
   border-style: solid;
   border-width: 0;
@@ -5530,7 +5531,7 @@ textarea.form-control-lg {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 550px;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
