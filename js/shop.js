@@ -68,7 +68,7 @@ var products = [
 var cartList = [];
 
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
-var cart = [""];
+var cart = [];
 var total = 0;
 let found = "";
 let numOfProductsBuyed = 0;
@@ -90,23 +90,19 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-
-    if (confirm("Clean cart?") == true) {
-        location.reload();
-    }
+    cart = []
 }
 
 // Exercise 3
 function calculateTotal() {
 
-    totalWithDiscount = 0
-    totalWithoutDiscount = 0
-
-    for (i = 1; i < cart.length; i++) {
-
+    totalWithDiscount = 0;
+    totalWithoutDiscount = 0;
+    for (i = 0; i < cart.length; i++) {
         if (cart[i].subtotalWithDiscount === undefined) {
             let subtotal = cart[i].subtotal;
-            totalWithoutDiscount = parseFloat(totalWithoutDiscount) + parseFloat(subtotal);
+            totalWithoutDiscount = subtotal;
+
         }
         else {
             let subtotalWithDiscount = cart[i].subtotalWithDiscount;
@@ -137,61 +133,52 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
 
-    let find1promo = cart.find(e => e.id === 1);
+    if (cart.find(e => e.id === 1 || 3)) {
+        let find1promo = cart.find(e => e.id === 1);
 
-    if (find1promo === undefined) {
-    }
-
-    else {
-        let index1 = cart.findIndex(e => e.id == "1");
-        if (find1promo.quantity >= 3) {
-            cart[index1].subtotalWithDiscount = (10 * cart[index1].quantity);
+        if (find1promo === undefined) {
         }
-    }
+        else {
+            let index1 = cart.findIndex(e => e.id == "1");
+            if (find1promo.quantity >= 3) {
+                cart[index1].subtotalWithDiscount = (10 * cart[index1].quantity);
+            }
+        }
 
-    let find3promo = cart.find(e => e.id === 3);
+        let find3promo = cart.find(e => e.id === 3);
 
-    if (find3promo === undefined) {
-
-    }
-    else {
-        let index3 = cart.findIndex(e => e.id == "3");
-        if (find3promo.quantity >= 10) {
-            let index3Total = (cart[index3].price * cart[index3].quantity);
-            index3Total = (index3Total * 0.7);
-            index3TotaltoFixed = index3Total.toFixed(2);
-            cart[index3].subtotalWithDiscount = index3TotaltoFixed;
+        if (find3promo === undefined) {
+        }
+        else {
+            let index3 = cart.findIndex(e => e.id == "3");
+            if (find3promo.quantity >= 10) {
+                let index3Total = (cart[index3].price * cart[index3].quantity);
+                index3Total = (index3Total * 0.7);
+                index3TotaltoFixed = index3Total.toFixed(2);
+                cart[index3].subtotalWithDiscount = index3TotaltoFixed;
+            }
         }
     }
 }
 
 // Exercise 6
 function printCart() {
-    applyPromotionsCart();
+    let rows = "";
 
-    for (i = 1; i < cart.length; i++) {
-        if (cart[i].subtotalWithDiscount === undefined) {
-            cart_list.insertAdjacentHTML('beforeend',
-                `<tr> <th scope="row">${cart[i].name}</th>` +
-                `<td>${cart[i].price}</td>` +
-                `<td>${cart[i].quantity}</td>` +
-                `<td>${cart[i].subtotal}</td>` +
-                `<td>${cart[i].subtotal} </td>` +
-                `</tr>`);
-        }
+    cart.map(e => {
+        rows += `
+    <tr>
+    <th scope="row"> ${e.name} </th>
+    <td> $ ${e.price} </td>
+    <td> ${e.quantity} </td>
+    <td>$ ${e.subtotal}</td>
+    <td>${e.subtotalWithDiscount ? '$' + e.subtotalWithDiscount : ''}</td>
+    </tr>
+    `
+    });
 
-        else {
-            cart_list.insertAdjacentHTML('beforeend',
-                `<tr> <th scope="row">${cart[i].name}</th>` +
-                `<td>${cart[i].price}</td>` +
-                `<td>${cart[i].quantity}</td>` +
-                `<td>${cart[i].subtotal}</td>` +
-                `<td>${cart[i].subtotalWithDiscount} </td>` +
-                `</tr>`);
-        }
-    }
-    calculateTotal();
-    total_price.insertAdjacentHTML('beforeend', `${total}`);
+    document.getElementById("cart_list").innerHTML = rows;
+    document.getElementById("total_price").innerHTML = total;
 }
 
 // ** Nivell II **
@@ -206,22 +193,22 @@ function addToCart(id) {
 
     let index = products.findIndex(e => e.id == id);
     const objFound = Object.assign(products[index]);
-    cartList.push(objFound);
     numOfProductsBuyed += 1;
     document.getElementById("count_product").innerHTML = numOfProductsBuyed;
 
-    for (i = i; +i < cartList.length; i++) {
-        if (cartList[i].hasOwnProperty("quantity")) {
-            cartList[i].quantity = cartList[i].quantity + 1;
-            cartList[i].subtotal = cartList[i].subtotal + cartList[i].price;
-        }
-        else {
-            cartList[i].quantity = 1;
-            cartList[i].subtotal = cartList[i].price;
-            cart.push(cartList[i]);
-        }
+    //GENERATE CART
+
+    if (objFound.hasOwnProperty("quantity")) {
+        objFound.quantity = objFound.quantity + 1;
+        objFound.subtotal = objFound.subtotal + objFound.price;
     }
-    console.log(cart);
+    else {
+        objFound.quantity = 1;
+        objFound.subtotal = objFound.price;
+        cart.push(objFound);
+    }
+    applyPromotionsCart();
+    calculateTotal();
 }
 
 // Exercise 9
