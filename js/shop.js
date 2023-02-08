@@ -71,9 +71,10 @@ var cartList = [];
 var cart = [];
 var total = 0;
 let found = "";
-let numOfProductsBuyed = 0;
+let general_cart_icon = 0;
 
 // Exercise 1
+
 /*
 function buy(id) {
 
@@ -81,14 +82,15 @@ function buy(id) {
         let index = products.findIndex(e => e.id == id);
         const objFound = Object.assign(products[index]);
         cartList.push(objFound);
-        numOfProductsBuyed += 1;
-        document.getElementById("count_product").innerHTML = numOfProductsBuyed;
+        general_cart_icon += 1;
+        document.getElementById("count_product").innerHTML = general_cart_icon;
         break;
     }
 }
 */
 
 // Exercise 2
+
 function cleanCart() {
     location.reload();
 }
@@ -107,7 +109,6 @@ function calculateTotal() {
             let subtotalWithDiscount = cart[i].subtotalWithDiscount;
             totalWithDiscount = parseFloat(totalWithDiscount) + parseFloat(subtotalWithDiscount);
         }
-
         total = totalWithDiscount + totalWithoutDiscount;
     }
 }
@@ -131,6 +132,7 @@ function generateCart() {
 */
 
 // Exercise 5
+
 function applyPromotionsCart() {
 
     if (cart.find(e => e.id === 1 || 3)) {
@@ -162,6 +164,7 @@ function applyPromotionsCart() {
 }
 
 // Exercise 6
+
 function printCart() {
     let rows = "";
 
@@ -191,11 +194,10 @@ function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-
     let index = products.findIndex(e => e.id == id);
     const objFound = Object.assign(products[index]);
-    numOfProductsBuyed += 1;
-    document.getElementById("count_product").innerHTML = numOfProductsBuyed;
+    general_cart_icon += 1;
+    document.getElementById("count_product").innerHTML = general_cart_icon;
 
 switch (index){
     case 0:
@@ -252,15 +254,27 @@ switch (index){
 }
 
 // Exercise 9
+
 function removeFromCart(id) {
     let index = products.findIndex(e => e.id == id);
     const objFound = Object.assign(products[index]);
-    itemName = objFound.name;
     
     if (objFound.quantity === 0 || objFound.quantity === undefined){
         alert("Este producto no está en el carrito")
     }
     else {
+        objFound.quantity = objFound.quantity -1;
+        if (objFound.quantity === 0){
+            delete objFound.quantity;
+            let objIndexInCart = cart.findIndex(e => e.id == objFound.id);
+            cart.splice(objIndexInCart,1);
+        }
+        
+        general_cart_icon -= 1;
+        document.getElementById("count_product").innerHTML = general_cart_icon;
+        applyPromotionsCart();
+        calculateTotal();
+    
         switch (index){
             case 0:
                 num_item_1 -=1;
@@ -300,10 +314,6 @@ function removeFromCart(id) {
                                                 break;
         }
     }
-// 1. Loop for to the array products to get the item to add to cart
-// 2. Add found product to the cartList array
-
-
 }
                                         
 function open_modal() {
