@@ -100,6 +100,7 @@ function calculateTotal() {
 
     totalWithDiscount = 0;
     totalWithoutDiscount = 0;
+    
     for (i = 0; i < cart.length; i++) {
         if (cart[i].subtotalWithDiscount === undefined) {
             let subtotal = cart[i].subtotal;
@@ -191,9 +192,6 @@ let i = 0;
 let num_item_1 = num_item_2 = num_item_3 = num_item_4 = num_item_5 = num_item_6 = num_item_7 = num_item_8 = num_item_9 = 0;
 
 function addToCart(id) {
-    // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
     let index = products.findIndex(e => e.id == id);
     const objFound = Object.assign(products[index]);
     general_cart_icon += 1;
@@ -260,7 +258,7 @@ function removeFromCart(id) {
     const objFound = Object.assign(products[index]);
     
     if (objFound.quantity === 0 || objFound.quantity === undefined){
-        alert("Este producto no está en el carrito")
+        alert("This product is not in the cart")
     }
     else {
         objFound.quantity = objFound.quantity -1;
@@ -268,6 +266,10 @@ function removeFromCart(id) {
             delete objFound.quantity;
             let objIndexInCart = cart.findIndex(e => e.id == objFound.id);
             cart.splice(objIndexInCart,1);
+        }
+        objFound.subtotal = objFound.subtotal - objFound.price;
+        if (objFound.id === 1 && objFound.quantity < 3 || objFound.id === 3 && objFound.quantity < 10){
+            delete objFound.subtotalWithDiscount;
         }
         
         general_cart_icon -= 1;
