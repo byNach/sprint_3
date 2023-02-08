@@ -15,10 +15,10 @@
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <!-- Core theme CSS (includes Bootstrap)-->
     </head>
-    <body data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="50">
+    <body style="background-image: url(images/teal-gb4abc44fb_1920.jpg); background-size: cover; background-attachment: fixed;">
         <!-- Navigation-->
-		<nav class="navbar py-3 py-lg-0 navbar-light bg-light navbar-expand-lg" id="navbar-example2">
-			 <div class="container d-flex">
+		<nav class="navbar  py-3 py-lg-0 navbar-light bg-transparent" id="navbar-example2">
+			 <div class="container my-3 px-lg-5 bg-white navbar-expand-lg rounded-pill">
 				 <a class="navbar-brand" href="#!">ShopNow</a>
 				 <div class="d-flex flex-row order-lg-last align-items-center">
 				 
@@ -27,7 +27,7 @@
 					 </button>
 					 <ul class="navbar-nav me-3 me-lg-0 d-flex flex-row align-items-center">
 						 <li class="dropdown search-dropdown nav-item py-lg-3">						 
-							 <a href="javascript:void(0)" class="btn btn-outline-dark flex-center" type="button" data-bs-toggle="modal" data-bs-target="#cartModal" onclick="open_modal()" data-bs-auto-close="outside">
+							 <a href="javascript:void(0)" class="btn btn-primary flex-center" type="button" data-bs-toggle="modal" data-bs-target="#cartModal" onclick="open_modal()" data-bs-auto-close="outside">
 								<i class="fas fa-shopping-cart me-1"></i> Cart <span class="badge bg-dark text-white ms-1 rounded-pill" id="count_product">0</span>
 							 </a>
 						 </li>
@@ -53,7 +53,7 @@
 		 </nav>
 
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="bg-dark py-5 ">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">IT Academy Shop</h1>
@@ -68,7 +68,7 @@
 			<div class="container px-4 px-lg-5 mt-5">
 				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 					<div class="col mb-5">
-						<div class="card h-100">
+						<div class="card h-100 bg-white">
 							<img class="card-img-top" src="./images/product.svg" alt="..." />
 							<div class="card-body p-4">
 								<div class="text-center">
@@ -76,16 +76,16 @@
 									$10.5
 								</div>
 							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="card-footer p-4 pt-0 border-top-0">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(1)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(1)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_1">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(1)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(1)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
@@ -101,13 +101,13 @@
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(2)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(2)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_2">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(2)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(2)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
@@ -123,13 +123,13 @@
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(3)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(3)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_3">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(3)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(3)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
@@ -152,13 +152,13 @@
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(4)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(4)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_4">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(4)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(4)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
@@ -174,13 +174,13 @@
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(5)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(5)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_5">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(5)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(5)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
@@ -196,13 +196,13 @@
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(6)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(6)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_6">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(6)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(6)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
@@ -225,13 +225,13 @@
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(7)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(7)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_7">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(7)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(7)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
@@ -247,13 +247,13 @@
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(8)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(8)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_8">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(8)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(8)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
@@ -269,13 +269,13 @@
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="row">
 									<div class="text d-flex justify-content-between mb-2">
-										<button type="button" onclick="addToCart(9)" class="btn btn-outline-dark">Add to cart</button>
+										<button type="button" onclick="addToCart(9)" class="btn btn-primary">Add to cart</button>
 										<div class="text flex-center" type="text">
 											<i class="fas fa-shopping-cart "></i><span class="badge bg-dark text-white ms-1 rounded-pill" id="count_item_9">0</span>
 										</div>
 									</div>
 								</div>
-								<div class="text"><button type="button" onclick="removeFromCart(9)" class="btn btn-outline-warning">Delete</button></div>
+								<div class="text"><button type="button" onclick="removeFromCart(9)" class="btn btn-secondary">Delete</button></div>
 							</div>
 						</div>
 					</div>
