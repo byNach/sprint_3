@@ -169,10 +169,10 @@ function printCart() {
         rows += `
     <tr>
     <th scope="row"> ${e.name} </th>
-    <td> $ ${e.price} </td>
+    <td> ${e.price} </td>
     <td> ${e.quantity} </td>
-    <td>$ ${e.subtotal}</td>
-    <td>${e.subtotalWithDiscount ? '$' + e.subtotalWithDiscount : e.subtotal}</td>
+    <td> ${e.subtotal}</td>
+    <td>${e.subtotalWithDiscount ? + e.subtotalWithDiscount : e.subtotal}</td>
     </tr>
     `
     });
@@ -193,7 +193,6 @@ function addToCart(id) {
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 
     let index = products.findIndex(e => e.id == id);
-    console.log(index);
     const objFound = Object.assign(products[index]);
     numOfProductsBuyed += 1;
     document.getElementById("count_product").innerHTML = numOfProductsBuyed;
@@ -257,12 +256,56 @@ function removeFromCart(id) {
     let index = products.findIndex(e => e.id == id);
     const objFound = Object.assign(products[index]);
     itemName = objFound.name;
+    
+    if (objFound.quantity === 0 || objFound.quantity === undefined){
+        alert("Este producto no está en el carrito")
+    }
+    else {
+        switch (index){
+            case 0:
+                num_item_1 -=1;
+                document.getElementById("count_item_1").innerHTML = num_item_1;
+                break;
+                case 1:
+                    num_item_2 -=1;
+                    document.getElementById("count_item_2").innerHTML = num_item_2;
+                    break;
+                    case 2:
+                        num_item_3 -=1;
+                        document.getElementById("count_item_3").innerHTML = num_item_3;
+                        break;
+                        case 3:
+                            num_item_4 -=1;
+                            document.getElementById("count_item_4").innerHTML = num_item_4;
+                            break;
+                            case 4:
+                                num_item_5 -=1;
+                                document.getElementById("count_item_5").innerHTML = num_item_5;
+                                break;
+                                case 5:
+                                    num_item_6 -=1;
+                                    document.getElementById("count_item_6").innerHTML = num_item_6;
+                                    break;
+                                    case 6:
+                                        num_item_7 -=1;
+                                        document.getElementById("count_item_7").innerHTML = num_item_7;
+                                        break;
+                                        case 7:
+                                            num_item_8 -=1;
+                                            document.getElementById("count_item_8").innerHTML = num_item_8;
+                                            break;
+                                            case 8:
+                                                num_item_9 -=1;
+                                                document.getElementById("count_item_9").innerHTML = num_item_9;
+                                                break;
+        }
+    }
+// 1. Loop for to the array products to get the item to add to cart
+// 2. Add found product to the cartList array
 
 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
 }
-
+                                        
 function open_modal() {
     printCart();
 }
