@@ -1,4 +1,5 @@
-// If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
+// ARRAY OF PRODUCTS
+
 var products = [
     {
         id: 1,
@@ -64,12 +65,9 @@ var products = [
     }
 ]
 
-// Array with products (objects) added directly with push(). Products in this array are repeated.
-var cartList = [];
-
-// Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
-var cart = [];
-var total = 0;
+//let cartList = [];
+let cart = [];
+let total = 0;
 let found = "";
 let general_cart_icon = 0;
 
@@ -96,6 +94,7 @@ function cleanCart() {
 }
 
 // Exercise 3
+
 function calculateTotal() {
 
     totalWithDiscount = 0;
@@ -115,6 +114,7 @@ function calculateTotal() {
 }
 
 // Exercise 4
+
 /*
 function generateCart() {
 
@@ -194,6 +194,9 @@ let num_item_1 = num_item_2 = num_item_3 = num_item_4 = num_item_5 = num_item_6 
 function addToCart(id) {
     let index = products.findIndex(e => e.id == id);
     const objFound = Object.assign(products[index]);
+
+    //COUNTER FOR CART ICON IN NAVBAR
+
     general_cart_icon += 1;
     document.getElementById("count_product").innerHTML = general_cart_icon;
 
@@ -236,7 +239,7 @@ switch (index){
         break;
 }
 
-    //GENERATE CART
+    //GENERATE CART WITH QUANTITY AND SUBTOTAL
 
     if (objFound.hasOwnProperty("quantity")) {
         objFound.quantity = objFound.quantity + 1;
@@ -247,6 +250,7 @@ switch (index){
         objFound.subtotal = objFound.price;
         cart.push(objFound);
     }
+
     applyPromotionsCart();
     calculateTotal();
 }
@@ -272,6 +276,8 @@ function removeFromCart(id) {
             delete objFound.subtotalWithDiscount;
         }
         
+        //REMOVE 1 ON CART ICON IN NAVBAR
+
         general_cart_icon -= 1;
         document.getElementById("count_product").innerHTML = general_cart_icon;
         applyPromotionsCart();
